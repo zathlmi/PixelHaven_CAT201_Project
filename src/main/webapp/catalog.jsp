@@ -45,6 +45,46 @@
         .nav-item { text-decoration: none; color: #000; font-weight: 600; font-size: 14px; text-transform: uppercase; }
         .nav-item:hover, .nav-item.active { color: #000; }
 
+        .nav-right-group {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-left: auto;
+            z-index: 2;
+        }
+
+        .search-pill {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border: 1px solid #ccc;  /* Thin gray border like the image */
+            border-radius: 50px;     /* Oval shape */
+            padding: 0 15px;
+            height: 36px;            /* Sleek height */
+            width: 200px;
+            transition: all 0.2s ease;
+        }
+
+        .search-pill:focus-within {
+            border-color: #888; /* Slightly darker border when clicking */
+        }
+
+        .search-pill input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+            font-family: inherit;
+            color: #333;
+        }
+
+        /* Placeholder color */
+        .search-pill input::placeholder {
+            color: #aaa;
+            font-weight: 400;
+        }
+
         .user-actions { display: flex; align-items: center; }
         .nav-action { text-decoration: none; color: #000; font-weight: 700; font-size: 14px; }
         .user-greeting { font-size: 14px; color: #000; font-weight: 400; margin-right: 20px; }
@@ -155,6 +195,12 @@
         <a href="admin.jsp" class="nav-item" style="color: #d93025; font-weight: bold;">ADMIN PANEL</a>
         <% } %>
     </div>
+
+    <div class="nav-right-group">
+
+        <form action="search" method="get" class="search-pill">
+            <input type="text" name="query" placeholder="Search" autocomplete="off">
+        </form>
 
     <div class="user-actions">
         <% if (currentUser != null) { %>
