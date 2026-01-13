@@ -2,10 +2,10 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Google Sans', 'Roboto', sans-serif; background-color: white; color: black; }
 
-/* --- SAMSUNG STYLE NAVBAR --- */
+/* --- NAVBAR LAYOUT --- */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Pushes Logo left and Actions right */
+    justify-content: space-between; /* Logo Left, Right-Actions Right */
     align-items: center;
     padding: 0 40px;
     height: 80px;
@@ -16,307 +16,117 @@ body { font-family: 'Google Sans', 'Roboto', sans-serif; background-color: white
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* Logo */
 .logo {
     font-size: 22px;
     font-weight: 700;
     color: black;
     text-decoration: none;
     letter-spacing: -0.5px;
+    z-index: 2; /* Ensures logo stays on top */
 }
 
-/* Center Links */
+/* CENTERED NAVIGATION LINKS */
 .nav-links {
-    position: absolute;       /* Takes it out of the normal flow */
-    left: 50%;                /* Moves it to the middle */
-    transform: translateX(-50%); /* Centers it perfectly based on its own width */
+    position: absolute;       /* Removes from flow so it doesn't push other items */
+    left: 50%;                /* Moves to middle of screen */
+    transform: translateX(-50%); /* Centers perfectly */
     display: flex;
-    gap: 40px;
+    gap: 30px;
 }
 
 .nav-item {
     text-decoration: none;
     color: black;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
-    text-transform: uppercase; /* Samsung uses uppercase mostly or bold */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     transition: color 0.2s;
 }
 
-.nav-item:hover {
-    color: #666;
-}
+.nav-item:hover { color: #666; }
+.nav-item.active { border-bottom: 2px solid black; padding-bottom: 4px; }
 
-.nav-item.active {
-    border-bottom: 2px solid black;
-    padding-bottom: 4px;
-}
-
-/* Right Actions (Sign In/Up) */
-.nav-actions {
+/* --- RIGHT SIDE CONTAINER --- */
+/* This groups Search + Auth and forces space between them */
+.right-actions {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 20px; /* FIX: Prevents "User" text from crashing into Search Bar */
+    z-index: 2;
 }
 
-.nav-action {
+/* --- SEARCH BAR STYLES --- */
+.search-pill {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 50px;     /* OVAL SHAPE */
+    padding: 0 15px;
+    height: 40px;
+    width: 220px;
+    transition: all 0.2s ease;
+}
+
+.search-pill:focus-within {
+    box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    border-color: transparent;
+}
+
+/* FIX: Removes the ugly gray box/border from the button */
+.search-icon-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.search-pill input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    font-family: inherit;
+    color: #333;
+}
+
+/* --- AUTH BUTTON STYLES --- */
+.auth-box {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between Email/Log In and Sign Up button */
+}
+
+.user-email {
+    font-size: 13px;
+    font-weight: 500;
+    margin-right: 5px;
+    white-space: nowrap; /* Ensures email doesn't wrap weirdly */
+}
+
+.nav-link-btn {
     text-decoration: none;
     color: black;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
-    cursor: pointer;
 }
 
-.btn-signup {
-    text-decoration: none;
+/* The Black "Sign Up" Oval Button */
+.btn-black-pill {
     background-color: black;
     color: white;
-    padding: 8px 20px;
-    border-radius: 20px;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 50px;
     font-size: 13px;
     font-weight: 600;
+    white-space: nowrap;
     transition: background 0.2s;
 }
 
-.btn-signup:hover {
-    background-color: #444;
-}
-
-.welcome-text {
-    font-size: 13px;
-    font-weight: 500;
-}
-
-/* --- HERO SECTION (Background Wallpaper) --- */
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 700px; /* Taller for a premium look */
-
-    /* Background Image Settings */
-    background-image: url('images/banner.jpg'); /* Make sure your image name matches this! */
-    background-size: cover;      /* Scales image to fill the container */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centers text vertically */
-    align-items: flex-start; /* Aligns text to the left */
-    text-align: left;
-    padding-left: 100px;     /* Push text away from the left edge */
-}
-
-/* The container for text */
-.hero-content {
-    z-index: 2;
-    max-width: 600px;
-    animation: fadeInUp 1s ease-out;
-}
-
-/* Title - White text */
-.hero-title {
-    font-family: 'Google Sans', sans-serif;
-    font-size: 64px;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 20px;
-    letter-spacing: -1px;
-    line-height: 1.1;
-}
-
-/* Subtitle - White text */
-.hero-subtitle {
-    font-size: 20px;
-    color: white;
-    margin-bottom: 40px;
-    font-weight: 400;
-}
-
-/* Button - White button with black text */
-.hero-btn {
-    background-color: white;
-    color: black;
-    padding: 15px 40px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 16px;
-    transition: transform 0.2s, background 0.2s;
-    display: inline-block;
-}
-
-.hero-btn:hover {
-    background-color: #f0f0f0;
-    transform: scale(1.05);
-}
-
-/* Animation */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- HIGHLIGHTS GRID (New Arrivals) --- */
-.highlights-container {
-    max-width: 1400px;
-    margin: 60px auto;
-    padding: 0 40px;
-    text-align: center;
-}
-
-.section-heading {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 40px;
-}
-
-.grid-row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.feature-card {
-    background-color: #f4f4f4;
-    border-radius: 24px;
-    padding: 50px 30px;
-    text-align: center;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    transition: box-shadow 0.3s;
-}
-
-.feature-card:hover {
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.feature-title {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.feature-desc {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 30px;
-}
-
-.feature-card img {
-    width: 80%;
-    max-height: 350px;
-    object-fit: contain;
-    margin-top: auto;
-    margin-bottom: 40px;
-}
-
-/* --- GOOGLE STORE STYLE GRID (Stacked Rows) --- */
-
-.google-section {
-    max-width: 1200px;
-    margin: 60px auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px; /* Increased gap between the stacked rows */
-}
-
-/* Common Card Styles */
-.google-card {
-    background-color: #F1F3F4; /* Google Light Grey */
-    border-radius: 28px;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    transition: box-shadow 0.3s ease;
-}
-
-.google-card:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-}
-
-/* LARGE CARD STYLES (Applies to all 3 rows now) */
-.large-card {
-    width: 100%;
-    min-height: 450px; /* Increased height slightly for better spacing */
-    align-items: center;
-    justify-content: space-between;
-    padding: 60px;
-}
-
-.img-large {
-    width: 45%; /* Slightly smaller image width to balance with text */
-    max-width: 500px;
-    object-fit: contain;
-}
-
-/* TEXT STYLES */
-.card-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align text to left */
-    z-index: 2;
-    max-width: 50%; /* Ensure text doesn't overlap image */
-}
-
-.new-tag {
-    font-size: 12px;
-    font-weight: 500;
-    color: #5f6368;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.card-title {
-    font-size: 40px;
-    font-weight: 500;
-    color: #202124;
-    margin-bottom: 10px;
-    line-height: 1.1;
-}
-
-.card-desc {
-    font-size: 18px; /* Slightly larger description */
-    color: #5f6368;
-    margin-bottom: 30px;
-}
-
-/* BUTTONS & LINKS */
-.card-links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.btn-blue {
-    background-color: #1967D2;
-    color: white;
-    padding: 12px 28px; /* Slightly bigger button */
-    border-radius: 24px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 14px;
-    transition: background 0.2s;
-}
-
-.btn-blue:hover {
-    background-color: #174ea6;
-}
-
-.link-blue {
-    color: #1967D2;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.link-blue:hover {
-    text-decoration: underline;
-}
+.btn-black-pill:hover { background-color: #333; }
