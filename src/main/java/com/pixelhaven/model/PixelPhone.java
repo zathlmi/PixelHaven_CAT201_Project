@@ -63,6 +63,7 @@ public class PixelPhone implements Serializable {
     public String getRearCameraSpecs() { return rearCameraSpecs; }
     public String getFrontCameraSpecs() { return frontCameraSpecs; }
 
+
     public void setName(String name) { this.name = name; }
     public void setSeries(String series) { this.series = series; }
     public void setDefaultPrice(double defaultPrice) { this.defaultPrice = defaultPrice; }
